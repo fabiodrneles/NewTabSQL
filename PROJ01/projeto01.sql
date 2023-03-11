@@ -13,6 +13,28 @@ CREATE TABLE transacao (
   	PRIMARY KEY (id)
 );
 
+-- Criar uma query que insira uma transação com os campos tipo, nome, valor e data de cadastro.
+INSERT INTO transacao (tipo, nome, valor)
+VALUES ('venda', 'nome da transação1', 10.05); 
+INSERT INTO transacao (tipo, nome, valor)
+VALUES ('compra', 'nome da transação2', 110.05); 
+INSERT INTO transacao (tipo, nome, valor)
+VALUES ('venda', 'nome da transação3', 1210.05); 
+INSERT INTO transacao (tipo, nome, valor)
+VALUES ('compra', 'nome da transação4', 10750.05); 
+
+-- Criar uma query que retorne todas as transações cadastradas em ordem crescente da data de cadastro.
+select * from transacao order by dt_cadastro asc;
+
+-- Criar uma query que retorne o saldo acumulado considerando todas as transações cadastradas.
+select sum( if( tipo = 'venda', valor, -1*valor    )) as 'Saldo Acumulado' from transacao;
+
+-- Criar uma query que exclua todas as transações cadastradas.
+delete from transacao;
+
+drop table transacao;
+
+
 
 
 
